@@ -9,7 +9,7 @@ The system simulates email exchange through a local client-server architecture. 
 ## 🔧 Features
 
 - Full implementation of both client and server applications
-- Both sides feature a modern **JavaFX GUI**
+- Both sides feature a  **JavaFX GUI**
 - Emails are stored locally using **JSON files**:
   - Each client has its own inbox file
   - The server stores a separate folder for each client
