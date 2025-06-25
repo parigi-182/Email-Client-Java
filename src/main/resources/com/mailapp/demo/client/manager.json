@@ -1,0 +1,12 @@
+[
+  {
+    "sender": "ceo@mail.com",
+    "receivers": [
+      "manager@mail.com"
+    ],
+    "subject": "Updates on project A",
+    "text": "Gm, gimme updates.\nceo",
+    "data": "Jun 25, 2025, 4:29:01 PM",
+    "id": 170
+  }
+]

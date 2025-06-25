@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="300.0" stylesheets="@fogliodistile.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mailapp.demo.Controllers.DialogController">
+   <children>
+      <AnchorPane prefHeight="140.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="95.0" layoutY="36.0" text="Nuova/e email in arrivo" textAlignment="CENTER" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="ok" layoutX="95.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#onOkClick" prefHeight="38.0" prefWidth="110.0" text="Ok" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
+            <Label fx:id="ind_email" alignment="CENTER" layoutX="130.0" layoutY="14.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

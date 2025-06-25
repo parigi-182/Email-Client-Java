@@ -1,0 +1,32 @@
+.root{
+  -fx-background-color: A9DEF9;
+  -fx-font-size: 14;
+}
+.split-pane{
+  -fx-background-color: A9DEF9;
+  -fx-font-size: 14;
+}
+.split-pane:horizontal > .split-pane-divider{
+  -fx-background-color: white;
+  -fx-min-width: 5px; /* larghezza minima */
+  -fx-max-width: 5px; /* larghezza massima */
+  -fx-border-width:0;
+}
+.split-pane-divider{
+  -fx-background-color: A9DEF9;
+}
+.button{
+  -fx-background-color: EDE7B1;
+}
+
+.button:hover {
+  -fx-background-color: FFF689;
+}
+
+.button:armed{
+  -fx-background-color: EDE7B1;
+}
+
+.list-view:vertical{
+  -fx-border-color: white;
+}
