@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "sender": "dev2@mail.com",
+    "receivers": [
+      "dev1@mail.com"
+    ],
+    "subject": "Testing software",
+    "text": "Goodmorning,\n\nHow are you?\n\nRegards",
+    "data": "Jul 13, 2025, 8:38:14 PM",
+    "id": 172
+  }
+]

@@ -22,6 +22,12 @@ The system simulates email exchange through a local client-server architecture. 
 - Communication between client and server occurs through sockets
 - The project follows the course’s guidelines, **excluding features like registration or authentication** to focus on architectural and technical correctness
 
+## 💻 Screenshots
+![none](/screenshots/start.png)
+![none](/screenshots/write.png)
+![none](/screenshots/reply_re.png)
+![none](/screenshots/json_emails.png)
+
 ## 📁 Data Management
 
 - All email and user data is stored as JSON in the `/resources/` folder

@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "sender": "dev2@mail.com",
+    "receivers": [
+      "dev2@mail.com"
+    ],
+    "subject": "Re: Testing software",
+    "text": "Very well\nbye\n\nRe: dev2@mail.com \n\tGoodmorning,\n\t\n\tHow are you?\n\t\n\tRegards\n",
+    "data": "Jul 13, 2025, 8:39:04 PM",
+    "id": 173
+  },
+  {
+    "sender": "dev2@mail.com",
+    "receivers": [
+      "dev2@mail.com"
+    ],
+    "subject": "Re: Testing software",
+    "text": "Very well\nbye\n\nRe: dev2@mail.com \n\tGoodmorning,\n\t\n\tHow are you?\n\t\n\tRegards\n",
+    "data": "Jul 13, 2025, 8:39:04 PM",
+    "id": 173
+  },
+  {
+    "sender": "dev2@mail.com",
+    "receivers": [
+      "dev1@mail.com"
+    ],
+    "subject": "Testing software",
+    "text": "Goodmorning,\n\nHow are you?\n\nRegards",
+    "data": "Jul 13, 2025, 8:38:14 PM",
+    "id": 172
+  }
+]
