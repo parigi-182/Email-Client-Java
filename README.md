@@ -1,50 +1,118 @@
-# 📧 Email Service Java
+# Email Client Java
 
-This project is the final assignment for the *Programming 3* course. It implements both the **client-side** and **server-side** of a basic email service, using Java and JavaFX.
+A client-server email application written in Java, developed as the final assignment for the *Programming 3* course. Both the client and server applications include a graphical user interface built with JavaFX and styled with CSS.
 
-## 🖥️ Overview
+---
 
-The system simulates email exchange through a local client-server architecture. Both the client and the server feature a **graphical user interface (GUI)** built with FXML and styled with CSS. The goal is to demonstrate knowledge of JavaFX, multithreading, file I/O, and JSON serialization.
+## Overview
 
-## 🔧 Features
+The system simulates email exchange over a local network using a socket-based client-server architecture. The server manages multiple concurrent client connections through a thread pool and persists all email data as JSON files. Each side of the application — client and server — runs as an independent JavaFX process with its own GUI.
 
-- Full implementation of both client and server applications
-- Both sides feature a  **JavaFX GUI**
-- Emails are stored locally using **JSON files**:
-  - Each client has its own inbox file
-  - The server stores a separate folder for each client
-- The **server** runs a continuous loop, listening for incoming connections and dispatching each request to a dedicated thread using a **thread pool of service executors**
-- File access is **synchronized using locks** to ensure safe concurrent read/write operations on the JSON files
+---
 
-## 🧪 How It Works
+## Architecture
 
-- At launch, the client **randomly selects a predefined email identity** from a pool of available users (no manual login or account creation)
-- Communication between client and server occurs through sockets
-- The project follows the course’s guidelines, **excluding features like registration or authentication** to focus on architectural and technical correctness
+**Client**
 
-## 💻 Screenshots
-![none](/screenshots/start.png)
-![none](/screenshots/write.png)
-![none](/screenshots/reply_re.png)
-![none](/screenshots/json_emails.png)
+- At startup, the client randomly selects one of a pool of predefined email identities (no login or registration flow)
+- Connects to the server via TCP socket to send and receive emails
+- Maintains a local JSON inbox file that mirrors the server-side copy
+- UI is defined in FXML and styled with CSS
 
-## 📁 Data Management
+**Server**
 
-- All email and user data is stored as JSON in the `/resources/` folder
-- File-level locking ensures mutual exclusion when accessing inboxes
-- Each client has its own dedicated inbox file both on the client and server sides
+- Runs a continuous listener loop, accepting incoming client connections
+- Each connection is dispatched to a dedicated worker thread from an `ExecutorService` thread pool
+- One inbox JSON file per registered client is maintained under `resources/`
+- All file read/write operations are protected by explicit locks to ensure safe concurrent access
 
-## 🚧 Current Status
+**Communication**
 
-- The project is currently written in **Italian** and follows the internal naming conventions used during development
-- Future refactoring is planned to:
-  - Translate all class, variable, and resource names to English
-  - Improve code structure and maintainability
+Client-server communication occurs over plain TCP sockets. Serialization and deserialization of email objects use Gson.
 
-## 🌱 Possible Expansions
+---
 
-The following features are not currently implemented but are considered for future releases:
+## Dependencies
 
-- 📓 **Email event logging**: Track deletions, deliveries, and reads. This would enable multiple simultaneous client instances using the **same account**
-- 📎 **File attachment support**: Add support for sending and receiving attachments alongside the email body
-- 🔐 **Account creation and login**: Introduce real user registration and authentication systems
+| Library | Version |
+|---------|---------|
+| Java | 11 |
+| JavaFX base | 21-ea+5 |
+| JavaFX controls | 19.0.2 |
+| JavaFX FXML | 19.0.2 |
+| Gson | 2.10.1 |
+
+Build is managed with Maven.
+
+---
+
+## Building and running
+
+Build the project:
+
+```sh
+mvn clean package
+```
+
+Run the server:
+
+```sh
+mvn javafx:run -Djavafx.mainClass=com.mailapp.demo.Mains.EmailServerMain
+```
+
+Run a client instance:
+
+```sh
+mvn javafx:run -Djavafx.mainClass=com.mailapp.demo.Mains.EmailClientMain
+```
+
+Both processes must be running simultaneously. Start the server before launching any client.
+
+---
+
+## Data storage
+
+All data is stored under `src/main/resources/`. The server maintains one JSON file per client inbox. The client keeps a local copy of its own inbox. File-level locking ensures mutual exclusion when multiple threads attempt concurrent reads or writes to the same inbox file.
+
+---
+
+## Screenshots
+
+![Client startup](https://github.com/parigi-182/Email-Client-Java/raw/main/screenshots/start.png)
+![Compose window](https://github.com/parigi-182/Email-Client-Java/raw/main/screenshots/write.png)
+![Reply / Re: thread](https://github.com/parigi-182/Email-Client-Java/raw/main/screenshots/reply_re.png)
+![JSON inbox storage](https://github.com/parigi-182/Email-Client-Java/raw/main/screenshots/json_emails.png)
+
+---
+
+## Project structure
+
+```
+.
+├── src/main/
+│   ├── java/com/mailapp/demo/
+│   │   ├── Mains/
+│   │   │   ├── EmailClientMain.java
+│   │   │   └── EmailServerMain.java
+│   │   └── ...
+│   └── resources/
+│       └── <client-inboxes>.json
+├── screenshots/
+├── pom.xml
+└── README.md
+```
+
+---
+
+## Notes
+
+- Source code identifiers and resources are currently in Italian, following the naming conventions used during development. Translation to English is planned for a future refactor.
+- Authentication and account registration are intentionally omitted per course specification.
+
+---
+
+## Possible extensions
+
+- **Event logging**: recording deliveries, reads, and deletions would enable multiple simultaneous sessions on the same account
+- **Attachment support**: extending the email model and transfer protocol to handle binary payloads alongside the message body
+- **Authentication**: introducing a proper registration and login flow with credential storage
